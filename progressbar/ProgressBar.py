@@ -21,9 +21,9 @@ class ProgressBar(object):
     def adicionarBar(self):
         self.surface = pygame.surface.Surface((self.widthBox, self.heightBar + 10))     
         self.surface.fill(self.backgroundFundo)    
-        rectProgress = pygame.Rect(self.left,self.top,self.widthBar*self.progress,self.heightBar)
+        rectProgress = pygame.Rect(0,self.top,self.widthBar*self.progress,self.heightBar)
         self.rect = pygame.draw.rect(self.surface, self.colorBar, rectProgress)
-        self.surfacePrincipal.blit(self.surface, self.blitPosion)        
+        self.surfacePrincipal.blit(self.surface, self.blitPosion)               
 
     def adicionarTitle(self):
         text = self.font.render(self.titulo, True, self.colorTitle) 

@@ -39,7 +39,10 @@ class ProgressBar(object):
     def adicionarBar(self):
         self.surface = pygame.surface.Surface((self.widthBox, self.heightBar + 10))     
         self.surface.fill(self.backgroundFundo)    
-        rectProgress = pygame.Rect(self.left,self.top,self.widthBar*self.progress,self.heightBar)
+        progress = self.progress
+        if(progress >= 0.96):
+            progress = 0.96
+        rectProgress = pygame.Rect(self.left,self.top,self.widthBar*progress,self.heightBar)
         self.rect = pygame.draw.rect(self.surface, self.colorBar, rectProgress)
         self.surfacePrincipal.blit(self.surface, self.blitPosion)        
 
@@ -56,7 +59,7 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()       
-    progress1 = ProgressBar(DISPLAYSURF, 390, 35, 0.8, 380, (10,15), 'Saúde', (255, 201, 7))
+    progress1 = ProgressBar(DISPLAYSURF, 390, 35, 0.98, 380, (10,15), 'Saúde', (255, 201, 7))
     progress1.adicionarTitle()
 
     progress2 = ProgressBar(DISPLAYSURF, 390, 35, 0.35, 380, (10,70), 'Alimentação', (255, 118, 118))

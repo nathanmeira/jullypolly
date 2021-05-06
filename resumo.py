@@ -2,6 +2,7 @@ import sys, pygame
 from pygame.locals import *
 from random import *
 from progressbar.ProgressBar import ProgressBar
+from personagem.JullyPollly import JullyPollly
 
 pygame.init()
 
@@ -28,8 +29,10 @@ def drawRectBtnConfig():
     button = pygame.Rect(screen.get_rect().right - 80, 10, 40, 40)
     pygame.draw.rect(screen, [255, 0, 0], button)
 
+
+jully = JullyPollly()
 while True:
-    screen.fill((170,170,170))
+    screen.fill((237,237,237))
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
@@ -38,7 +41,15 @@ while True:
     message_display('Olá, Daniel!',400,200,25,(122,122,122), (20, 20))         
     drawRectBtnConfig()
 
-    progress1 = ProgressBar(screen, 450, 35, 0.8, 550, (20,70), 'Energia Geral', (255, 201, 7))
+    progress1 = ProgressBar(screen, 550, 35, jully.energiaGeral(), 550, (20,70), 'Energia Geral', (255, 201, 7))
     progress1.adicionarTitle()
 
+    progress2 = ProgressBar(screen, 390, 35, jully.getExercicio(), 380, (380,150), 'Exercicio', (51, 51, 51))
+    progress2.adicionarTitle()
+
+    progress3 = ProgressBar(screen, 390, 35, jully.getAlimentacao(), 380, (380,210), 'Alimentação', (255, 118, 118))
+    progress3.adicionarTitle()
+
+    jully.setExercicios(-0.03)
+    jully.setAlimentacao(-0.02)
     pygame.display.update()
