@@ -10,8 +10,14 @@ class JullyPollly(object):
         self.pesoExercicio = 0.4
         self.pesoAlimentacao = 0.6
 
+        self.variacaoExercicio = 0.03
+        self.variacaoAlimentacao = 0.02
+    
+    def energiaGeralPorcentagem(self):
+        return self.energiaGeral() / 100
+
     def energiaGeral(self):
-        return ((self.exercicios * self.pesoExercicio) + (self.alimentacao * self.pesoAlimentacao)) / 100
+        return ((self.exercicios * self.pesoExercicio) + (self.alimentacao * self.pesoAlimentacao))
         
     def setExercicios(self, variacao):
         self.exercicios += variacao
@@ -28,3 +34,6 @@ class JullyPollly(object):
 
     def getAlimentacao(self):
         return self.alimentacao / 100
+
+    def tempoVidaRestanteSegundos(self):
+        return int(self.energiaGeral()) 
