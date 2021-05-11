@@ -13,6 +13,8 @@ screen = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption("JullyPolly")
 clock = pygame.time.Clock()
 
+jullyImg = pygame.image.load('personagem/imagens/jully.png')
+
 
 # pygame.event.set_blocked(pygame.MOUSEMOTION)
 
@@ -60,5 +62,6 @@ while True:
     screen.blit(font.render(str('Vida Restante:'), True, (0, 0, 0)), (500, 280))
     screen.blit(font.render(str(jully.tempoVidaRestanteSegundos()), True, (0, 0, 0)), (560, 310))
 
+    screen.blit(jullyImg, (150, 260))
     pygame.display.update()
     # clock.tick(60)
