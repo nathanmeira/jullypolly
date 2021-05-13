@@ -27,21 +27,21 @@ display_width = 800
 display_height = 600
 screen = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption("JullyPolly")
+painel = Painel(screen)
 
-def painelJogo():
-    painel = Painel(screen)
+def painelJogo():    
     painel.init()
 
-
-def set_difficulty(value, difficulty):
-    print(difficulty)
-    pass
-
-
+def set_difficulty(value, isAtivarSom):
+    if(isAtivarSom == 1):
+        painel.ativarSom()  
+    else:
+        painel.desativarSom()       
+        
 menu = pygame_menu.Menu('', display_width, display_height, theme=THEME_BLUE)
 
 menu.add.text_input('Nome :', default='')
-menu.add.selector('Som :', [('Sim', 1), ('Não', 0)], onchange=set_difficulty)
+menu.add.selector('Som :', [('Não', 0), ('Sim', 1)], onchange=set_difficulty)
 menu.add.button('Jogar', painelJogo)
 menu.add.button('Sair', pygame_menu.events.EXIT)
 

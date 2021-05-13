@@ -10,9 +10,11 @@ class Painel(object):
         self.jully = JullyPollly()
         self.fontDefault = pygame.font.SysFont('Roboto',30)
         self.jullyImg = pygame.image.load('personagem/imagens/jully.png')
-
+        self.som = False
+        
     def init(self):
         clock = pygame.time.Clock()
+        self.tocarMusica()
         while True:
             clock.tick(60)
             self.screen.fill((237,237,237))
@@ -20,6 +22,8 @@ class Painel(object):
                 if event.type == QUIT:
                     pygame.quit()
                     sys.exit()  
+
+            
 
             self.message_display('Olá, Daniel!', 25, (122,122,122), (20, 20)) 
             self.drawRectBtnConfig()
@@ -66,3 +70,17 @@ class Painel(object):
     def blitQuantificacaoVidaPersonagem(self):
         self.screen.blit(self.fontDefault.render(str('Vida Restante:'), True, (0, 0, 0)), (500, 280))
         self.screen.blit(self.fontDefault.render(str(self.jully.tempoVidaRestanteSegundos()), True, (0, 0, 0)), (560, 310))
+
+    def ativarSom(self):
+        self.som = True
+
+    def desativarSom(self):
+        self.som = False
+
+    def tocarMusica(self):
+        if(self.som):
+            pygame.mixer.init()
+            pygame.mixer.music.load('som/catch.mp3')
+            pygame.mixer.music.play(-1)
+
+
