@@ -20,20 +20,18 @@ class Painel(object):
                 if event.type == QUIT:
                     pygame.quit()
                     sys.exit()  
+
             self.message_display('Olá, Daniel!', 25, (122,122,122), (20, 20)) 
             self.drawRectBtnConfig()
 
-            self.createProgressBar(self.screen, 550, 35, self.jully.energiaGeralPorcentagem(), 550, (20,70), 'Energia Geral', (255, 201, 7))
-            self.createProgressBar(self.screen, 390, 35, self.jully.getExercicio(), 380, (380,150), 'Exercicio', (51, 51, 51))
-            self.createProgressBar(self.screen, 390, 35, self.jully.getAlimentacao(), 380, (380,210), 'Alimentação', (255, 118, 118))
+            self.blitProgressStatusVida()
 
-            self.jully.setExercicios(self.jully.variacaoExercicio * -1)
-            self.jully.setAlimentacao(self.jully.variacaoAlimentacao * -1)
+            self.diminuirProgressivamenteVidaPersonagem()
 
-            self.screen.blit(self.fontDefault.render(str('Vida Restante:'), True, (0, 0, 0)), (500, 280))
-            self.screen.blit(self.fontDefault.render(str(self.jully.tempoVidaRestanteSegundos()), True, (0, 0, 0)), (560, 310))
+            self.blitQuantificacaoVidaPersonagem()           
 
-            self.screen.blit(self.jullyImg, (150, 260))
+            self.blitPersonagem()
+            
             pygame.display.update()
 
     def message_display(self, text, font_size, font_color, posiBlit):
@@ -52,3 +50,19 @@ class Painel(object):
     def createProgressBar(self, screen, widthBar, heightBar, progress, widthBox, blitPosion, titulo, colorBar):
         progress1 = ProgressBar(screen, widthBar, heightBar, progress, widthBox, blitPosion, titulo, colorBar)
         progress1.adicionarTitle()
+
+    def blitProgressStatusVida(self):
+        self.createProgressBar(self.screen, 550, 35, self.jully.energiaGeralPorcentagem(), 550, (20,70), 'Energia Geral', (255, 201, 7))
+        self.createProgressBar(self.screen, 390, 35, self.jully.getExercicio(), 380, (380,150), 'Exercicio', (51, 51, 51))
+        self.createProgressBar(self.screen, 390, 35, self.jully.getAlimentacao(), 380, (380,210), 'Alimentação', (255, 118, 118))
+
+    def diminuirProgressivamenteVidaPersonagem(self):
+        self.jully.setExercicios(self.jully.variacaoExercicio * -1)
+        self.jully.setAlimentacao(self.jully.variacaoAlimentacao * -1)
+
+    def blitPersonagem(self):
+        self.screen.blit(self.jullyImg, (150, 260))
+
+    def blitQuantificacaoVidaPersonagem(self):
+        self.screen.blit(self.fontDefault.render(str('Vida Restante:'), True, (0, 0, 0)), (500, 280))
+        self.screen.blit(self.fontDefault.render(str(self.jully.tempoVidaRestanteSegundos()), True, (0, 0, 0)), (560, 310))
