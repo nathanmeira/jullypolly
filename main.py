@@ -38,10 +38,14 @@ def set_difficulty(value, isAtivarSom):
     else:
         painel.desativarSom()       
         
+def set_nome(nome):
+    painel.jully.setNome(nome)
+
+
 menu = pygame_menu.Menu('', display_width, display_height, theme=THEME_BLUE)
 
-menu.add.text_input('Nome :', default='')
-menu.add.selector('Som :', [('Não', 0), ('Sim', 1)], onchange=set_difficulty)
+menu.add.text_input('Nome: ', default='', onchange=set_nome)
+menu.add.selector('Som: ', [('Não', 0), ('Sim', 1)], onchange=set_difficulty)
 menu.add.button('Jogar', painelJogo)
 menu.add.button('Sair', pygame_menu.events.EXIT)
 

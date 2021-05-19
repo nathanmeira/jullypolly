@@ -37,3 +37,9 @@ class JullyPollly(object):
 
     def tempoVidaRestanteSegundos(self):
         return int(self.energiaGeral()) 
+
+    def setNome(self, nome):
+        self.nome = nome
+
+    def getNome(self):
+        return self.nome
