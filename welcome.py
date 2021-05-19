@@ -43,7 +43,7 @@ class InputBox:
     def draw(self, screen):
         screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))
         pygame.draw.rect(screen, self.color, self.rect, 2)
-        pygame.display.flip()
+        #pygame.display.flip()
 
 def text_objects(text,font,font_color):
     textSurface = font.render(text, True,font_color)
@@ -54,7 +54,7 @@ def message_display(text,width,height,font_size,font_color):
     TextSurf, TextRect = text_objects(text, largeText, font_color)
     TextRect.center = (width,height)
     screen.blit(TextSurf, TextRect)
-    pygame.display.update()
+    #pygame.display.update()
 
 def display():
     message_display('Seja bem vindo ao JullyPolly',400,200,40,(96,96,96))
@@ -63,13 +63,14 @@ def display():
 def button(msg,x,y,w,h):
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
-    #if x+w > mouse[0] > x and y+h > mouse[1] > y:
+    if x+w > mouse[0] > x and y+h > mouse[1] > y:
+        f = open('resumo.py')
     smallText = font(20)
     textSurf, textRect = text_objects(msg, smallText, (255,255,255))
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     pygame.draw.rect(screen, (51,51,255), (x,y,w,h))
     screen.blit(textSurf, textRect)
-    pygame.display.update() 
+    #pygame.display.update() 
     
 input_box = InputBox(205, 300, 400, 40)
 while True:
@@ -83,5 +84,6 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        
+            
+    pygame.display.update() 
  

@@ -9,7 +9,7 @@ class Painel(object):
         self.screen = screen  
         self.jully = JullyPollly()
         self.fontDefault = pygame.font.SysFont('Roboto',30)
-        self.jullyImg = pygame.image.load('personagem/imagens/jully.png')
+        self.jullyImg = pygame.image.load('personagem/imagens/doggy.png')
         self.som = False
         
     def init(self):
