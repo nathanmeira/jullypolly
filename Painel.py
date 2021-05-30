@@ -110,6 +110,9 @@ class Painel(object):
             pygame.draw.rect(self.screen,color_light,[x_btn,y_btn,140,40])          
         else:
             pygame.draw.rect(self.screen,color_dark,[x_btn,y_btn,140,40])
+        text = self.fontDefault.render('Jogar', True, (255,255,255)) 
+        text_rect = text.get_rect(center=(int(x_btn) + 70, y_btn + 20))
+        self.screen.blit(text, text_rect) 
 
     def isEventSobBtnJogarFrisbol(self, mouse, x_btn, y_btn):
         return x_btn <= mouse[0] <= x_btn+140 and y_btn <= mouse[1] <= y_btn+40
