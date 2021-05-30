@@ -204,4 +204,4 @@ def game_loop():
         player.move_frisbee(-frisbee_vel, foods)
         screen.fill(white)
         
-game_loop()
+# game_loop()
