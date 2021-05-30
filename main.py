@@ -27,7 +27,7 @@ display_width = 800
 display_height = 600
 screen = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption("JullyPolly")
-painel = Painel(screen)
+painel = Painel(screen, display_width, display_height)
 
 def painelJogo():    
     painel.init()

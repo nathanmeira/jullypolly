@@ -7,8 +7,10 @@ from frisbol.FrisBol import FrisBol
 
 
 class Painel(object):   
-    def __init__(self, screen):
+    def __init__(self, screen, width, height):
         self.screen = screen  
+        self.width = width
+        self.height = height
         self.jully = JullyPollly()
         self.fontDefault = pygame.font.SysFont('Roboto',30)
         self.jullyImg = pygame.image.load('personagem/imagens/jullyV2.png')
@@ -30,11 +32,16 @@ class Painel(object):
     def resumoStatus(self):
         clock = pygame.time.Clock()
         clock.tick(60)
-        self.screen.fill((237,237,237))
+        self.screen.fill((237,237,237))        
+        x_btn = 135
+        y_btn = 400
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()         
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if self.isEventSobBtnJogarFrisbol(pygame.mouse.get_pos(), x_btn, y_btn):
+                    self.initFrisbol()
 
         self.message_display('Olá, ' + str(self.jully.getNome()) + '!', 25, (122,122,122), (20, 20)) 
         self.drawRectBtnConfig()
@@ -46,6 +53,8 @@ class Painel(object):
         self.blitQuantificacaoVidaPersonagem()           
 
         self.blitPersonagem()
+       
+        self.drawButton(x_btn, y_btn)
         
         pygame.display.update()
 
@@ -94,4 +103,13 @@ class Painel(object):
             pygame.mixer.music.load('som/catch.mp3')
             pygame.mixer.music.play(-1)
 
+    def drawButton(self, x_btn, y_btn):
+        color_light = (170,170,170)
+        color_dark = (100,100,100)
+        if self.isEventSobBtnJogarFrisbol(pygame.mouse.get_pos(), x_btn, y_btn):
+            pygame.draw.rect(self.screen,color_light,[x_btn,y_btn,140,40])          
+        else:
+            pygame.draw.rect(self.screen,color_dark,[x_btn,y_btn,140,40])
 
+    def isEventSobBtnJogarFrisbol(self, mouse, x_btn, y_btn):
+        return x_btn <= mouse[0] <= x_btn+140 and y_btn <= mouse[1] <= y_btn+40
