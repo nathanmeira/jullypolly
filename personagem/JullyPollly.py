@@ -36,10 +36,16 @@ class JullyPollly(object):
         return self.alimentacao / 100
 
     def tempoVidaRestanteSegundos(self):
-        return int(self.energiaGeral()) 
+        if(self.energiaGeral() > 1):
+            return int(self.energiaGeral()) 
+        return round(self.energiaGeral(), 2)
 
     def setNome(self, nome):
         self.nome = nome
 
     def getNome(self):
         return self.nome
+
+    def resetStatusPersonagem(self):
+        self.exercicios = 100
+        self.alimentacao = 100

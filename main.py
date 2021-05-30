@@ -30,6 +30,7 @@ pygame.display.set_caption("JullyPolly")
 painel = Painel(screen, display_width, display_height)
 
 def painelJogo():    
+    painel.jully.resetStatusPersonagem()   
     painel.init()
 
 def set_difficulty(value, isAtivarSom):
@@ -49,6 +50,7 @@ menu.add.selector('Som: ', [('Não', 0), ('Sim', 1)], onchange=set_difficulty)
 menu.add.button('Jogar', painelJogo)
 menu.add.button('Sair', pygame_menu.events.EXIT)
 
+painel.setMenu(menu)
 menu.mainloop(screen)
 
 

@@ -56,6 +56,10 @@ class Painel(object):
        
         self.drawButton(x_btn, y_btn)
         
+        if(self.jully.tempoVidaRestanteSegundos() <= 0):
+            self.menu.mainloop(self.screen)
+            exit
+        
         pygame.display.update()
 
     def message_display(self, text, font_size, font_color, posiBlit):
@@ -116,3 +120,6 @@ class Painel(object):
 
     def isEventSobBtnJogarFrisbol(self, mouse, x_btn, y_btn):
         return x_btn <= mouse[0] <= x_btn+140 and y_btn <= mouse[1] <= y_btn+40
+
+    def setMenu(self, menu):
+        self.menu = menu
