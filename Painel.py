@@ -1,7 +1,9 @@
 import pygame, sys
 from pygame.locals import *
+import random
 from progressbar.ProgressBar import ProgressBar
 from personagem.JullyPollly import JullyPollly
+from frisbol.FrisBol import FrisBol
 
 
 class Painel(object):   
@@ -9,34 +11,43 @@ class Painel(object):
         self.screen = screen  
         self.jully = JullyPollly()
         self.fontDefault = pygame.font.SysFont('Roboto',30)
-        self.jullyImg = pygame.image.load('personagem/imagens/doggy.png')
+        self.jullyImg = pygame.image.load('personagem/imagens/jullyV2.png')
         self.som = False
         
-    def init(self):
-        clock = pygame.time.Clock()
+    def init(self):        
         self.tocarMusica()
+        jogarFrisbol = False
         while True:
-            clock.tick(60)
-            self.screen.fill((237,237,237))
-            for event in pygame.event.get():
-                if event.type == QUIT:
-                    pygame.quit()
-                    sys.exit()  
+            if(jogarFrisbol):
+                jogarFrisbol = self.initFrisbol()
+            else: 
+                self.resumoStatus()
 
-            
+    def initFrisbol(self):
+        jogo = FrisBol(800, 600, self.screen)
+        return jogo.init()
 
-            self.message_display('Olá, ' + str(self.jully.getNome()) + '!', 25, (122,122,122), (20, 20)) 
-            self.drawRectBtnConfig()
+    def resumoStatus(self):
+        clock = pygame.time.Clock()
+        clock.tick(60)
+        self.screen.fill((237,237,237))
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()         
 
-            self.blitProgressStatusVida()
+        self.message_display('Olá, ' + str(self.jully.getNome()) + '!', 25, (122,122,122), (20, 20)) 
+        self.drawRectBtnConfig()
 
-            self.diminuirProgressivamenteVidaPersonagem()
+        self.blitProgressStatusVida()
 
-            self.blitQuantificacaoVidaPersonagem()           
+        self.diminuirProgressivamenteVidaPersonagem()
 
-            self.blitPersonagem()
-            
-            pygame.display.update()
+        self.blitQuantificacaoVidaPersonagem()           
+
+        self.blitPersonagem()
+        
+        pygame.display.update()
 
     def message_display(self, text, font_size, font_color, posiBlit):
         largeText = pygame.font.SysFont('Roboto',font_size)
