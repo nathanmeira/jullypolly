@@ -241,4 +241,4 @@ def game_loop():
         player.move_frisbee(-frisbee_vel, enemy)
         screen.fill(white)
         
-game_loop()
+# game_loop()

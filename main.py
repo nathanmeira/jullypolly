@@ -25,7 +25,7 @@ THEME_BLUE = Theme(
 
 pygame.init()
 display_width = 800
-display_height = 600
+display_height = 700
 screen = pygame.display.set_mode((display_width,display_height))
 
 menu = pygame_menu.Menu('', display_width, display_height, theme=THEME_BLUE)
