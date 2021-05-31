@@ -11,11 +11,15 @@ class Painel(object):
         self.screen = screen  
         self.width = width
         self.height = height
-        self.jully = JullyPollly()
-        self.fontDefault = pygame.font.SysFont('Roboto',30)
         self.jullyImg = pygame.image.load('personagem/imagens/jullyV2.png')
+        self.fontDefault = pygame.font.SysFont('Roboto',30)
         self.som = False
-        
+        self.nomeJully = 'Jully'
+
+    def initJully(self):
+        self.jully = JullyPollly()
+        self.jully.setNome(self.nomeJully)
+
     def init(self):        
         self.tocarMusica()
         jogarFrisbol = False
@@ -123,3 +127,9 @@ class Painel(object):
 
     def setMenu(self, menu):
         self.menu = menu
+
+    def getJully(self):
+        return self.jully
+    
+    def setNomePersonagem(self, nome):
+        self.nomeJully = nome
