@@ -51,7 +51,6 @@ class Painel(object):
 
         self.message_display('Olá, ' + str(self.jully.getNome()) + '!', 25, (122,122,122), (20, 20)) 
         self.message_display('Pontos: ' + str(self.jully.getScore()), 25, (122,122,122), (400, 20)) 
-        self.drawRectBtnConfig()
 
         self.blitProgressStatusVida()
 
