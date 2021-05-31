@@ -30,7 +30,7 @@ class Painel(object):
                 self.resumoStatus()
 
     def initFrisbol(self):
-        jogo = FrisBol(self.width, self.height, self.screen)
+        jogo = FrisBol(self.width, self.height, self.screen, self.jully)
         return jogo.init()
 
     def resumoStatus(self):

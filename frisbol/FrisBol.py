@@ -4,7 +4,7 @@ from pygame.locals import *
 from game import Frisbee, Main, Player, Food
 
 class FrisBol(object):   
-    def __init__(self, width, height, screen):
+    def __init__(self, width, height, screen, jully):
         self.SCORE = 0
         self.width = width
         self.height = height
@@ -32,6 +32,7 @@ class FrisBol(object):
         self.lost = False
         self.lost_count = 0
         self.player = Player(self.x,self.y)
+        self.jully = jully
         
     def draw(self):
         self.screen.blit(self.BG, (0,0))
@@ -115,12 +116,13 @@ class FrisBol(object):
                 fruit.move(self.fruit_vel)
                 if self.collide(fruit, self.player):
                     self.SCORE += 1
+                    self.jully.addStatusVida(fruit.type)
                     self.foods.remove(fruit) 
                 elif fruit.y + fruit.get_height() > self.height:
                     if self.SCORE != 0:
                         self.SCORE -= 1
                     self.foods.remove(fruit)
 
-            self.player.move_frisbee(-self.frisbee_vel, self.enemy)
+            self.player.move_frisbee(-self.frisbee_vel, self.enemy, self.jully)
             pygame.display.update()
         return False

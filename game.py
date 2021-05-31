@@ -90,7 +90,7 @@ class Player(Main):
         self.mask = pygame.mask.from_surface(self.food_img)
         self.max_health = health
 
-    def move_frisbee(self, vel, objs):
+    def move_frisbee(self, vel, objs, jully):
         self.cooldown()
         for frisbee in self.frisbees:
             frisbee.move(vel)
@@ -102,6 +102,7 @@ class Player(Main):
                         objs.remove(obj)
                         global SCORE
                         SCORE = SCORE + 1
+                        jully.addStatusExercicio()
                         if frisbee in self.frisbees:
                             self.frisbees.remove(frisbee)
 
@@ -119,6 +120,7 @@ class Food(Main):
     def __init__(self,x,y,type):
         super().__init__(x,y,type)
         self.food_img = self.FOOD_MAP[type]
+        self.type = type
         self.mask = pygame.mask.from_surface(self.food_img)
 
     def move(self,vel):
