@@ -117,10 +117,12 @@ class FrisBol(object):
                 if self.collide(fruit, self.player):
                     self.SCORE += 1
                     self.jully.addStatusVida(fruit.type)
+                    self.jully.addScore(1)
                     self.foods.remove(fruit) 
                 elif fruit.y + fruit.get_height() > self.height:
                     if self.SCORE != 0:
                         self.SCORE -= 1
+                        self.jully.addScore(-1)
                     self.foods.remove(fruit)
 
             self.player.move_frisbee(-self.frisbee_vel, self.enemy, self.jully)
