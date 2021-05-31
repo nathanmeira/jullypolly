@@ -4,6 +4,7 @@ import random
 from progressbar.ProgressBar import ProgressBar
 from personagem.JullyPollly import JullyPollly
 from frisbol.FrisBol import FrisBol
+from GameOver import GameOver
 
 
 class Painel(object):   
@@ -18,7 +19,8 @@ class Painel(object):
 
     def initJully(self):
         self.jully = JullyPollly()
-        self.jully.setNome(self.nomeJully)
+        self.jully.setNome(self.nomeJully)        
+        self.gameOver = GameOver(self.screen, self.jully, self.menu)
 
     def init(self):        
         self.tocarMusica()
@@ -62,7 +64,7 @@ class Painel(object):
         self.drawButton(x_btn, y_btn)
         
         if(self.jully.tempoVidaRestanteSegundos() <= 0):
-            self.menu.mainloop(self.screen)
+            self.gameOver.init()
             exit
         
         pygame.display.update()
