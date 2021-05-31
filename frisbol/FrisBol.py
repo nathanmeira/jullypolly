@@ -3,13 +3,15 @@ import random
 from pygame.locals import *
 from game import Frisbee, Main, Player, Food
 
+
+
 class FrisBol(object):   
     def __init__(self, width, height, screen, jully):
         self.SCORE = 0
         self.width = width
         self.height = height
         self.screen = screen
-        self.BG = pygame.transform.scale(pygame.image.load('personagem/imagens/background.png'), (self.width, self.height))
+        self.BG = pygame.transform.scale(pygame.image.load('personagem/imagens/16602.jpg'), (self.width, self.height))
         self.white = (255,255,255)
         self.run = True
         self.FPS = 60

@@ -3,7 +3,7 @@ import random
 from pygame.locals import *
 
 pygame.init()
-WIDTH = 750 
+WIDTH = 750
 HEIGHT = 750 
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("JullyPolly")
@@ -16,7 +16,7 @@ strawberryImg = pygame.image.load('personagem/imagens/strawberry.png')
 grapeImg = pygame.image.load('personagem/imagens/grape.png')
 hotdogImg = pygame.image.load('personagem/imagens/doggy.png')
 frisbeeImg = pygame.image.load('personagem/imagens/frisbeeV2.png')
-BG = pygame.transform.scale(pygame.image.load('personagem/imagens/background.png'), (WIDTH, HEIGHT)) 
+BG = pygame.transform.scale(pygame.image.load('personagem/imagens/16602.jpg'), (WIDTH, HEIGHT))
 SCORE = 0 
 
 class Frisbee:
@@ -81,6 +81,7 @@ class Main:
             frisbee = Frisbee(self.x, self.y, self.frisbee_img)
             self.frisbees.append(frisbee)
             self.cool_down = 1
+            pygame.mixer.Channel(0).play(pygame.mixer.Sound('som/catch.mp3'))
 
 class Player(Main):
     def __init__(self, x, y, health=100):

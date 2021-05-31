@@ -49,8 +49,8 @@ class Painel(object):
                 if self.isEventSobBtnJogarFrisbol(pygame.mouse.get_pos(), x_btn, y_btn):
                     self.initFrisbol()
 
-        self.message_display('Olá, ' + str(self.jully.getNome()) + '!', 25, (122,122,122), (20, 20)) 
-        self.message_display('Pontos: ' + str(self.jully.getScore()), 25, (122,122,122), (400, 20)) 
+        self.message_display('Seja bem vindo, ' + str(self.jully.getNome()) + '!', 50, (122,122,122), (20, 20))
+        self.message_display('Pontos: ' + str(self.jully.getScore()), 35, (122,122,122), (550, 20))
 
         self.blitProgressStatusVida()
 
@@ -86,8 +86,8 @@ class Painel(object):
         progress1.adicionarTitle()
 
     def blitProgressStatusVida(self):
-        self.createProgressBar(self.screen, 550, 35, self.jully.energiaGeralPorcentagem(), 550, (20,70), 'Energia Geral', (255, 201, 7))
-        self.createProgressBar(self.screen, 390, 35, self.jully.getExercicio(), 380, (380,150), 'Exercicio', (51, 51, 51))
+        self.createProgressBar(self.screen, 550, 35, self.jully.energiaGeralPorcentagem(), 550, (20,70), 'Energia Geral', (31, 207, 78))
+        self.createProgressBar(self.screen, 390, 35, self.jully.getExercicio(), 380, (380,150), 'Exercício', (51, 51, 51))
         self.createProgressBar(self.screen, 390, 35, self.jully.getAlimentacao(), 380, (380,210), 'Alimentação', (255, 118, 118))
 
     def diminuirProgressivamenteVidaPersonagem(self):
@@ -98,7 +98,7 @@ class Painel(object):
         self.screen.blit(self.jullyImg, (150, 260))
 
     def blitQuantificacaoVidaPersonagem(self):
-        self.screen.blit(self.fontDefault.render(str('Vida Restante:'), True, (0, 0, 0)), (500, 280))
+        self.screen.blit(self.fontDefault.render(str('Tempo restante: '), True, (0, 0, 0)), (500, 280))
         self.screen.blit(self.fontDefault.render(str(self.jully.tempoVidaRestanteSegundos()), True, (0, 0, 0)), (560, 310))
 
     def ativarSom(self):
@@ -110,7 +110,7 @@ class Painel(object):
     def tocarMusica(self):
         if(self.som):
             pygame.mixer.init()
-            pygame.mixer.music.load('som/catch.mp3')
+            pygame.mixer.music.load('som/bensound-funday.mp3')
             pygame.mixer.music.play(-1)
 
     def drawButton(self, x_btn, y_btn):

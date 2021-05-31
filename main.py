@@ -43,7 +43,7 @@ def painelJogo():
     painel.init()
 
 def rankingJogo():
-    ranking.init()    
+    ranking.init()
 
 def set_difficulty(value, isAtivarSom):
     if(isAtivarSom == 1):
@@ -56,7 +56,7 @@ def set_nome(nome):
 
 
 menu.add.text_input('Nome: ', default='', onchange=set_nome)
-menu.add.selector('Som: ', [('Não', 0), ('Sim', 1)], onchange=set_difficulty)
+menu.add.selector('Música: ', [('Não', 0), ('Sim', 1)], onchange=set_difficulty)
 menu.add.button('Ranking', rankingJogo)
 menu.add.button('Jogar', painelJogo)
 menu.add.button('Sair', pygame_menu.events.EXIT)
