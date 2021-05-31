@@ -1,6 +1,7 @@
 import pygame, sys
 from pygame.locals import *
 import random
+from personagem.JullyPollly import JullyPollly
 
 
 class Ranking(object):   
@@ -27,8 +28,9 @@ class Ranking(object):
                     exit
 
         order = 1
-        for p in self.listPersosagens:
-            self.message_display(p.getNome(), 25, (122,122,122), (20, 20 + (20 * order))) 
+        personagens = sorted(self.listPersosagens, key = JullyPollly.getScore, reverse=True)
+        for p in personagens:
+            self.message_display(p.getNome() + ' - ' + str(p.score) + ' ponto(s)', 25, (122,122,122), (20, 20 + (20 * order))) 
             order += 1
         pygame.display.update()
 
