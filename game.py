@@ -186,7 +186,7 @@ def game_loop():
             lost_count += 1
 
         if lost:
-            if lost_count > FPS * 3:
+            if lost_count:
                 run = False
             else:
                 continue

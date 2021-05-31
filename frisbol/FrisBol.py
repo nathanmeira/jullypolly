@@ -66,7 +66,7 @@ class FrisBol(object):
                 self.lost_count += 1
 
             if self.lost:
-                if self.lost_count > self.FPS * 3:
+                if self.lost_count:
                     self.run = False
                     break
                 else:
