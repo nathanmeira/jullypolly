@@ -103,6 +103,7 @@ class Player(Main):
                         global SCORE
                         SCORE = SCORE + 1
                         jully.addStatusExercicio()
+                        jully.addScore(1)
                         if frisbee in self.frisbees:
                             self.frisbees.remove(frisbee)
 
