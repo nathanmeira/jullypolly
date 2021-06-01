@@ -7,6 +7,7 @@ from random import *
 from pygame_menu.themes import Theme
 from Painel import Painel
 from Ranking import Ranking
+from HowToPlay import HowToPlay
 
 THEME_BLUE = Theme(
     background_color=(182, 64, 149),
@@ -36,6 +37,8 @@ painel = Painel(screen, display_width, display_height)
 listPersonagens = []
 ranking = Ranking(screen, listPersonagens, menu)
 
+howToPlay = HowToPlay(screen, menu)
+
 def painelJogo():    
     painel.initJully()
     painel.jully.resetStatusPersonagem()   
@@ -44,6 +47,9 @@ def painelJogo():
 
 def rankingJogo():
     ranking.init()
+
+def howToPlay():
+    howToPlay.init()
 
 def set_difficulty(value, isAtivarSom):
     if(isAtivarSom == 1):
@@ -58,20 +64,9 @@ def set_nome(nome):
 menu.add.text_input('Nome: ', default='', onchange=set_nome)
 menu.add.selector('Música: ', [('Não', 0), ('Sim', 1)], onchange=set_difficulty)
 menu.add.button('Ranking', rankingJogo)
+menu.add.button('Como Jogar', howToPlay)
 menu.add.button('Jogar', painelJogo)
 menu.add.button('Sair', pygame_menu.events.EXIT)
 
 painel.setMenu(menu)
 menu.mainloop(screen)
-
-
-
-
-
-
-
-
-
-
-
-
