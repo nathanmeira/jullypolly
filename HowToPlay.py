@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, os
 from pygame.locals import *
 import random
 
@@ -25,12 +25,13 @@ class HowToPlay(object):
                     self.menu.mainloop(self.screen)
                     exit
 
-        self.message_display('Como jogar?', 75, (122,122,122), (250, 100))
+        self.message_display('Como jogar?', 75, (122,122,122), (250, 120))
+        self.message_display('Pressione ESC para voltar', 25, (122, 122, 122), (560, 20))
 
-        self.message_display('Para mexer o personagem, utilize as setas do seu teclado', 30, (122,122,122), (290, 160))
-        self.message_display('Para atirar o frisbee, aperte espaço', 30, (122, 122, 122), (390, 160))
-        self.message_display('O objetivo é coletar o máximo de frutas que puder e destruir o máximo de hotdogs possíveis', 30, (122, 122, 122), (450, 160))
-        self.message_display('O jogo acaba quando 3 hotdogs atingirem o personagem', 30, (122, 122, 122), (500, 160))
+        self.message_display('Para mexer o personagem, utilize as setas do seu teclado', 30, (122,122,122), (130, 210))
+        self.message_display('Para atirar o frisbee, aperte espaço', 30, (122, 122, 122), (130, 240))
+        self.message_display('Colete as frutas e destrua o máximo de hotdogs possíveis', 30, (122, 122, 122), (130, 270))
+        self.message_display('O jogo acaba quando 3 hotdogs atingirem o personagem', 30, (122, 122, 122), (130, 310))
 
         pygame.display.update()
 

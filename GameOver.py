@@ -33,7 +33,7 @@ class GameOver(object):
         self.message_display('Morango(s) coletados: ' + str(self.jully.qtdMorango), 40, (122,122,122), (250, 200)) 
         self.message_display('Cenoura(s) coletados: ' + str(self.jully.qtdCenoura), 40, (122,122,122), (250, 230)) 
         self.message_display('Uva(s) coletados: ' + str(self.jully.qtdUva), 40, (122,122,122), (250, 260)) 
-        self.message_display('HotDogs destruídos: ' + str(self.jully.qtdHotDog), 40, (122,122,122), (250, 290)) 
+        self.message_display('Hotdogs destruídos: ' + str(self.jully.qtdHotDog), 40, (122,122,122), (250, 290))
 
         self.message_display('Pontos: ' + str(self.jully.score), 40, (122,122,122), (250, 330)) 
                     
